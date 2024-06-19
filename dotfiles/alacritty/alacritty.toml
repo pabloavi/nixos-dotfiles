@@ -489,7 +489,6 @@ chars = "\u001B[1;3R"
 key = "F3"
 mods = "Command"
 
-* Connection #0 to host pastebin.com left intact
 [[keyboard.bindings]]
 chars = "\u001B[1;3S"
 key = "F4"

@@ -48,9 +48,9 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # # Enable the GNOME Desktop Environment.
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -105,12 +105,19 @@
 
     git
     nix-prefetch-github
+    interception-tools
   ];
 
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 30d";
+  };
+
+  console = {
+    earlySetup = true;
+    packages = with pkgs; [ terminus_font ];
+    font = "ter-132b";
   };
 
 
@@ -140,6 +147,17 @@
     };
   };
 
+
+  services.interception-tools = {
+    enable = true;
+    plugins = with pkgs; [ interception-tools-plugins.caps2esc ];
+    udevmonConfig = ''
+               - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc -m 1 | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
+                 DEVICE:
+                   EVENTS:
+                     EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
+      	'';
+  };
 
 
 

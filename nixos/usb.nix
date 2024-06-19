@@ -3,6 +3,6 @@
 {
   imports = [
     ./configuration.nix
-    ./hardware-configuration-teclast.nix
+    ./hardware-configuration-usb.nix
   ];
 }
