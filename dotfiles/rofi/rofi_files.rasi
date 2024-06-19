@@ -1,0 +1,7 @@
+// file for custom rofi-files overriding config
+@import "config.rasi"
+
+window {
+    width: 60%;
+    height: 60%;
+}

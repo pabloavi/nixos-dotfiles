@@ -7,6 +7,7 @@
     ./foot.nix
     # ./alacritty.nix
     ./waybar.nix
+    ./rofi-wayland.nix
   ];
 
 

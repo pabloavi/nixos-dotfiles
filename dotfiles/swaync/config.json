@@ -1,0 +1,153 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "top",
+  "notification-icon-size": 64,
+  "notification-body-image-height": 100,
+  "notification-body-image-width": 200,
+  "timeout": 10,
+  "timeout-low": 5,
+  "timeout-critical": 0,
+  "fit-to-screen": true,
+  "control-center-width": 600,
+  "control-center-height": 900,
+  "notification-window-width": 500,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "transition-time": 200,
+  "hide-on-clear": false,
+  "hide-on-action": false,
+  "script-fail-notify": true,
+  "scripts": {
+    "example-script": {
+      "exec": "echo 'Do something...'",
+      "urgency": "Normal"
+    }
+  },
+  "notification-visibility": {
+    "example-name": {
+      "state": "muted",
+      "urgency": "Low",
+      "app-name": "Spotify"
+    }
+  },
+  "widgets": [
+    "label",
+    "DISABLEDmenubar#label",
+    "buttons-grid",
+    "backlight",
+    "backlight#KB",
+    "volume",
+    "mpris",
+    "title",
+    "dnd",
+    "notifications"
+  ],
+  "widget-config": {
+    "title": {
+      "text": "Notificaciones",
+      "clear-all-button": true,
+      "button-text": "Limpiar"
+    },
+    "dnd": {
+      "text": "No molestar"
+    },
+    "label": {
+      "max-lines": 1,
+      "text": "Centro de control"
+    },
+    "mpris": {
+      "image-size": 96,
+      "image-radius": 12
+    },
+    "backlight": {
+      "label": "  ",
+      "device": "intel_backlight",
+      "min": 10
+    },
+    "backlight#KB": {
+      "label": " ",
+      "device": "asus::kbd_backlight",
+      "subsystem": "leds"
+    },
+    "volume": {
+      "label": "  ",
+      "show-per-app": true,
+      "empty-list-label": "No hay fuentes de audio disponibles",
+      "expand-button-label": "",
+      "collapse-button-label": ""
+    },
+    "menubar#label": {
+      "menu#power-buttons": {
+        "label": "",
+        "position": "right",
+        "actions": [
+          {
+            "label": " Reiniciar",
+            "command": "systemctl reboot"
+          },
+          {
+            "label": " Bloquear pantalla",
+            "command": "swaylock -f --image ~/.config/wallpapers/snow_woods.jpg"
+          },
+          {
+            "label": " Cerrar sesión",
+            "command": "swaymsg exit"
+          },
+          {
+            "label": " Apagar",
+            "command": "systemctl poweroff"
+          }
+        ]
+      },
+      "menu#powermode-buttons": {
+        "label": "󱠴",
+        "position": "left",
+        "actions": [
+          {
+            "label": "Rendimiento",
+            "command": "powerprofilesctl set performance"
+          },
+          {
+            "label": "Balanceado",
+            "command": "powerprofilesctl set balanced"
+          },
+          {
+            "label": "Ahorro de energía",
+            "command": "powerprofilesctl set power-saver"
+          }
+        ]
+      },
+      "buttons#topbar-buttons": {
+        "position": "left",
+        "actions": [
+          {
+            "label": "",
+            "command": "grim"
+          }
+        ]
+      }
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "直",
+          "command": "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center wifi"
+        },
+        {
+          "label": "",
+          "command": "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center bluetooth"
+        },
+        {
+          "label": " ",
+          "command": "wdisplays"
+        },
+        {
+          "label": " ",
+          "command": "/home/pablo/.config/hypr/scripts/gamemode.sh"
+        }
+      ]
+    }
+  }
+}

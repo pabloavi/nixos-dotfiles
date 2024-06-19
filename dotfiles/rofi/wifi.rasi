@@ -1,0 +1,6 @@
+// file for rofi-power-menu overriding config
+@import "config.rasi"
+
+window {
+    width: 30%;
+}

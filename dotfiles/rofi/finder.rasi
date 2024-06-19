@@ -1,0 +1,7 @@
+// file for rofi file finder (finder.sh) overriding config 
+@import "config.rasi"
+
+window {
+    height: 60%;
+    width: 60%;
+}
