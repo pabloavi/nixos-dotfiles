@@ -58,8 +58,8 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.neovim.enable = true;
-  programs.git.enable = true;
+
+  # xdg.backgrounds."deer_god_2k.png".source = ../../dotfiles/backgrounds/deer_god_2k.png;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
