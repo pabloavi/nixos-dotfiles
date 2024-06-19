@@ -51,6 +51,8 @@
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    font-awesome
+    cantarell-fonts
 
     gnome.adwaita-icon-theme
     morewaita-icon-theme
