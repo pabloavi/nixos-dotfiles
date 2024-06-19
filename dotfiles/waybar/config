@@ -1,0 +1,253 @@
+[{
+  "layer": "top",
+  "output": "HDMI-A-1",
+  "height": 30, // Waybar height (to be removed for auto height)
+  "spacing": -5, // Gaps between modules (4px)
+  // "modules-left": ["custom/power", "custom/current", "custom/terminal", "river/layout", "tray", "wlr/workspaces", "custom/media"],
+  "modules-left": ["custom/power", "custom/current", "custom/terminal", "tray", "wlr/workspaces", "custom/media"],
+  "modules-center": ["river/tags", "hyprland/workspaces"],
+  // "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["idle_inhibitor", "network", "custom/notification", "backlight", "pulseaudio#output", "pulseaudio#input", "battery", "battery#bat2", "clock", ],
+  "river/tags": {
+    "num-tags": 10
+  },
+  "river/layout": {
+    "on-click": "riverctl send-layout-cmd luatile \"cycle_layout()\"",
+    "on-click-right": "riverctl send-layout-cmd luatile \"cycle_layout(true)\"",
+  },
+  "wlr/workspaces": {
+    "sort-by-number": true
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10",
+      "11": "1", "12": "2", "13": "3", "14": "4", "15": "5", "16": "6", "17": "7", "18": "8", "19": "9", "20": "10",
+    },
+    "persistent-workspaces": {
+      "*": 10
+    }
+  },
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{icon} ",
+    "format-icons": {
+      "locked": "",
+      "unlocked": ""
+    }
+  },
+  "mpd": {
+    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+    "format-disconnected": "Disconnected ",
+    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+    "unknown-tag": "N/A",
+    "interval": 2,
+    "consume-icons": {
+      "on": " "
+    },
+    "random-icons": {
+      "off": "<span color=\"#f53c3c\"></span> ",
+      "on": " "
+    },
+    "repeat-icons": {
+      "on": " "
+    },
+    "single-icons": {
+      "on": "1 "
+    },
+    "state-icons": {
+      "paused": "",
+      "playing": ""
+    },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "◉",
+      "deactivated": "◎"
+    }
+  },
+  "tray": {
+    // "icon-size": 21,
+    "spacing": 10
+  },
+  "clock": {
+    "format": "{:L%a, %d/%m %R}",
+    "on-click": "sleep 0.1; swaync-client -t"
+  },
+  "cpu": {
+    "format": "  {usage}%",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "  {}%"
+  },
+  "temperature": {
+    // "thermal-zone": 2,
+    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    // "format-critical": "{temperatureC}°C {icon}",
+    "format": "{icon}  {temperatureC}°C",
+    "format-icons": ["", "", ""]
+  },
+  "custom/gpu": {
+    "interval": 5,
+    "return-type": "json",
+    "exec": "~/.config/river/scripts/waybar_nvidia.sh",
+    "format": "   {}%",
+  },
+  "custom/dnf": {
+    "interval": 3600,
+    "return-type": "json",
+    "exec": "~/.config/river/scripts/waybar_dnf.sh",
+    "format": "{}"
+  },
+  "backlight": {
+    "format": "{icon}",
+    "format-icons": [" ", " ", " "],
+    "tooltip-format": "{percent}%"
+  },
+  "battery": {
+    "states": {
+      "98": 98,
+      "90": 90,
+      "80": 80,
+      "70": 70,
+      "60": 60,
+      "50": 50,
+      "40": 40,
+      "30": 30,
+      "20": 20,
+      "10": 10,
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "   {capacity}%",
+    "format-plugged": "   {capacity}%",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": ["", "", "", "", "", "", "", "", "", ""],
+  },
+  "battery#bat2": {
+    "bat": "BAT2"
+  },
+  "network": {
+* Connection #0 to host pastebin.com left intact
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "{icon}",
+    "tooltip-format": "{essid} ({signalStrength}%)\n{ifname}\n{gwaddr}\n祝 {bandwidthUpBytes}\n {bandwidthDownBytes}",
+    "format-disconnected": "睊 ",
+    "format-disabled": "睊 ",
+    "format-icons": {
+      "default": ["󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "]
+    },
+    "on-click": "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center wifi"
+  },
+  "pulseaudio#input": {
+    "format-source": " ",
+    "format-source-muted": " ",
+    "format": "{format_source}",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-click-right": "pavucontrol",
+    "tooltip-format": "{volume}%"
+  },
+  "pulseaudio#output": {
+    "format": "{icon}",
+    "format-muted": "婢 ",
+    "format-icons": {
+      "default": [" ", " ", "墳 "]
+    },
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "tooltip-format": "{volume}%"
+  },
+  "custom/power": {
+    "format": "",
+    "on-click": "pgrep -x wlogout || wlogout -p layer-shell",
+    "tooltip": false
+  },
+  "custom/terminal": {
+    "format": " ",
+    "on-click": "alacritty",
+    "tooltip": false
+  },
+  "custom/media": {
+    "format": "{icon} {}",
+    "return-type": "json",
+    "max-length": 40,
+    "format-icons": {
+      "spotify": "",
+      "default": "🎜"
+    },
+    "escape": true,
+    "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+    // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+  },
+  "custom/current": {
+    "format": "{}  ",
+    "exec": "~/Documentos/Universidad/scripts/current",
+    "on-click": "python3 \"$HOME/Documentos/Universidad/Apuntes/scripts/rofi-courses.py\"",
+    "interval": "once",
+    "tooltip": false,
+    "signal": 1
+  },
+  "custom/notification": {
+    "tooltip": true,
+    "tooltip-format": "Notificaciones: {}",
+    "format": "{icon} ",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "",
+      "dnd-notification": "󰂛",
+      "dnd-none": "󰂛",
+      "inhibited-notification": "",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": " ",
+      "dnd-inhibited-none": " ",
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+    "escape": true,
+  }
+},
+  {
+    "layer": "top",
+    "output": "!HDMI-A-1",
+    "height": 30, // Waybar height (to be removed for auto height)
+    "spacing": -5, // Gaps between modules (4px)
+    "modules-left": ["custom/ddcutil", "river/layout"],
+    "modules-center": ["river/tags", "hyprland/workspaces"],
+    // "modules-center": ["hyprland/workspaces"],
+    "hyprland/workspaces": {
+      "format": "{icon}",
+      "format-icons": {
+        "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10",
+        "11": "1", "12": "2", "13": "3", "14": "4", "15": "5", "16": "6", "17": "7", "18": "8", "19": "9", "20": "10",
+      },
+      "persistent-workspaces": {
+        "*": 10
+      }
+    },
+    "river/layout": {
+      "on-click": "riverctl send-layout-cmd luatile \"cycle_layout()\"",
+      "on-click-right": "riverctl send-layout-cmd luatile \"cycle_layout(true)\"",
+    },
+    "river/tags": {
+      "num-tags": 10
+    },
+    "custom/ddcutil": {
+      "exec": "ddcutil getvcp 10 -t | perl -nE 'if (/ C (\\d+) /) { say $1; }'",
+      "tooltip": false,
+      "exec-if": "sleep 1",
+      "format": " 󱎴   {}%",
+      "interval": "once",
+      "on-scroll-up": "ddcutil setvcp 10 + 10",
+      "on-scroll-down": "ddcutil setvcp 10 - 10",
+    }
+  }]
+# vi: ft=json
