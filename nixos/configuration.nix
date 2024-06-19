@@ -102,6 +102,8 @@
     vim
     wget
     curl
+    killall
+
     git
     nix-prefetch-github
   ];

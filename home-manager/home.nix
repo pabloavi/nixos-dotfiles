@@ -8,10 +8,11 @@
 , ...
 }: {
   imports = [
+    ./modules/sh.nix
+    ./modules/git.nix
     ./modules/nvim.nix
     ./modules/firefox.nix
     ./modules/hyprland.nix
-    ./modules/git.nix
   ];
 
   nixpkgs = {
