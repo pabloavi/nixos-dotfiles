@@ -5,5 +5,8 @@
     enable = true;
     userName = "Pablo";
     userEmail = "pavilesm1@gmail.com";
+    extraConfig = {
+      credential.helper = "oauth";
+    };
   };
 }
