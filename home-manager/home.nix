@@ -54,6 +54,7 @@
     font-awesome
     cantarell-fonts
 
+    gnome.nautilus
     gnome.adwaita-icon-theme
     morewaita-icon-theme
   ];
