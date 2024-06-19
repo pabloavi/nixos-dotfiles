@@ -1,0 +1,6 @@
+// file for rofi-qalculate overriding config
+@import "config.rasi"
+
+/* window { */
+/*     width: 30%; */
+/* } */

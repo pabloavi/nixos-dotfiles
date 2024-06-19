@@ -1,0 +1,148 @@
+/* main rofi file */
+configuration{
+    modi: "run,drun,window";
+    font: "Noto Sans Mono 14";
+    show-icons: true;
+    terminal: "alacritty";
+    drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+    window-format:              "{w}   {c}   {t}";
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "   Aplicaciones";
+    display-run: "   Ejecutar ";
+    display-window: " 﩯  Ventanas ";
+    sidebar-mode: true;
+}
+
+@theme "onedark"
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       800px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border-color:                @border-col;
+    background-color:            @bg-col;
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     25px;
+    padding:                     50px;
+    background-color: @bg-col;
+    children:                    [ "inputbar", "message","listview", "mode-switcher" ];
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     0px;
+    margin:                      0px 100px;
+    padding:                     5px;
+    border:                      1px;
+    border-radius:               100%;
+    border-color:                @border-col;
+    background-color:            @bg-col;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    background-color: @blue;
+    padding: 6px;
+    text-color: @bg-col;
+    border-radius: 3px;
+    margin: 10px 0px 10px 20px;
+}
+
+entry {
+    enabled:                     true;
+    padding:                     8px 12px;
+    border:                      0px;
+    background-color: @bg-col;
+    text-color: @fg-col;
+    cursor:                      text;
+    placeholder:                 "Search...";
+    placeholder-color:           inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       10;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     10px;
+    background-color:            transparent;
+    cursor:                      "default";
+}
+
+element {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     5px;
+    border:                      0px;
+    border-radius:               100%;
+    border-color:                @border-col;
+    background-color:            @bg-col;
+    text-color:                  @fg-col  ;
+    cursor:                      pointer;
+}
+
+element selected {
+    background-color:  @selected-col ;
+    text-color: @fg-col2  ;
+}
+
+element-icon {
+    background-color:            transparent;
+    size:                        24px;
+    cursor:                      inherit;
+}
+element-text {
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+mode-switcher{
+    enabled:                     true;
+    expand:                      false;
+    spacing:                     0px;
+    margin:                      0px 50px;
+    padding:                     12px;
+    border-radius:               100%;
+    background-color:            @bg-col;
+}
+button {
+    padding: 10px;
+    background-color: @bg-col-light;
+    text-color: @grey;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+  background-color: @bg-col;
+  text-color: @blue;
+}
