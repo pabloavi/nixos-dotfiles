@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ ];
+  home.packages = with pkgs; [
+    cantarell-fonts
+    font-awesome
+  ];
 
   programs.waybar.enable = true;
 
